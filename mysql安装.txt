@@ -1,0 +1,22 @@
+wget -i -c http://dev.mysql.com/get/mysql57-community-release-el7-10.noarch.rpm    #下载yum源
+
+sudo yum -y install mysql57-community-release-el7-10.noarch.rpm  #安装
+
+sudo yum -y install mysql-community-server   #安装mysql服务器
+
+systemctl start  mysqld.service   #启动mysql服务器
+
+systemctl status mysqld.service   #查看musql运行状态
+
+grep "password" /var/log/mysqld.log    #在日志中找密码
+
+mysql -uroot -p    #进入mysql数据库
+
+ALTER USER 'root'@'localhost' IDENTIFIED BY 'new password';    #修改密码
+
+
+create user 'yjk'@'%' identified by 'YAOjiKAI.2';  #创建一个普通用户
+grant all privileges on *.* to 'yjk'@'%';   #给他权限
+create database if not exists jikai1 default charset utf8 collate utf8_general_ci;
+#创建一个数据库
+
